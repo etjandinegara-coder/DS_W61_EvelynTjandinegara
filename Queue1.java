@@ -13,20 +13,29 @@ public class Queue1{
 
             Queue<String> terima = new ArrayDeque<>();
             Queue<String> tolak = new ArrayDeque<>();
+            Queue<Integer> umurQueue = new ArrayDeque<>();
 
+        for (String part : parts) {
+            umurQueue.add(Integer.valueOf(part));
+        }
 
-            for (String part : parts) {
-            int age = Integer.parseInt(part);
+        while (!umurQueue.isEmpty()) {
 
-                if (age >= 28 && age <= 118) {
-                    terima.add(part);
-                } else {
-                    tolak.add(part);
+            int age = umurQueue.remove();
+                
+                    if (age == 0 || age > 1000) {
+                        return;
+                    }
+
+                    if (age >= 28 && age <= 118) {
+                        terima.add(String.valueOf(age));
+                    } else {
+                        tolak.add(String.valueOf(age));
+                    }
                 }
-            }
-
+                
                 System.out.println("terima: " + terima);
                 System.out.println("tolak: " + tolak);
+            } 
         }
     }
-}
